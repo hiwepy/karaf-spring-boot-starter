@@ -103,7 +103,7 @@ public class KarafJmxClient implements InitializingBean {
 		
 		JMXServiceURL url = new JMXServiceURL("service:jmx:rmi:///jndi/rmi://localhost:1099/karaf-root");
 		JMXConnector connector = JMXConnectorFactory.connect(url, null);
-		mbeanServer = connector.getMBeanServerConnection();
+		//mbeanServer = connector.getMBeanServerConnection();
 		
 	}
 	
