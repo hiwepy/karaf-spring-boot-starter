@@ -1,3 +1,2 @@
-# spring-boot-starter-shiro-csrfguard
+# karaf-spring-boot-starter
 
-Spring Boot Starter For Shiro With Owasp Csrfguard
