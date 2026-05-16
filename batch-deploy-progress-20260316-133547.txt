@@ -1,0 +1,8 @@
+karaf-spring-boot-starter:3.0.x:FAIL
+karaf-spring-boot-starter:3.1.x:FAIL
+karaf-spring-boot-starter:3.2.x:FAIL
+karaf-spring-boot-starter:3.3.x:FAIL
+karaf-spring-boot-starter:3.4.x:FAIL
+karaf-spring-boot-starter:3.5.x:FAIL
+karaf-spring-boot-starter:4.0.x:FAIL
+karaf-spring-boot-starter:master:FAIL
