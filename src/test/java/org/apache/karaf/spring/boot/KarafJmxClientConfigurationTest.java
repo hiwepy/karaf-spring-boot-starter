@@ -15,24 +15,24 @@
  */
 package org.apache.karaf.spring.boot;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import org.springframework.context.annotation.Import;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * TODO
+ * Unit tests for {{ @link KarafJmxClientConfiguration }}.
+ *
  * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
  */
-@Target({ ElementType.TYPE })
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Inherited
-@Import({ KarafJmxClientConfiguration.class })
-public @interface EnableKarafClient {
+@DisplayName("KarafJmxClientConfiguration Tests")
+class KarafJmxClientConfigurationTest {
 
+    @Test
+    @DisplayName("Instance can be created via constructor")
+    void testInstantiation() {
+        KarafJmxClientConfiguration instance = new KarafJmxClientConfiguration();
+        assertThat(instance).isNotNull();
+    }
 }
