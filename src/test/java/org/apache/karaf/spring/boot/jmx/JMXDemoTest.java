@@ -19,6 +19,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
 /**
  * Unit tests for {{ @link JMXDemo }}.
@@ -35,4 +36,13 @@ class JMXDemoTest {
         JMXDemo instance = new JMXDemo();
         assertThat(instance).isNotNull();
     }
+
+    @Test
+    @DisplayName("main(String[]) runs without throwing even with no args")
+    void testMain() {
+        // The body of main is effectively empty (commented-out body), so it must return
+        // without side effects. Invoke it to cover the method.
+        assertThatNoException().isThrownBy(() -> JMXDemo.main(new String[0]));
+    }
+
 }

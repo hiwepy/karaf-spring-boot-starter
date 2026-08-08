@@ -13,41 +13,35 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.apache.karaf.spring.boot;
+package org.apache.karaf.spring.boot.sshd;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.GenericApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
 /**
- * Unit tests for {{ @link KarafJmxClientConfiguration }}.
+ * Unit tests for {{ @link KarafSshdClient }}.
  *
  * @author [@Loong Wan](https://github.com/loong10k)
  * @since 1.0.0
  */
-@DisplayName("KarafJmxClientConfiguration Tests")
-class KarafJmxClientConfigurationTest {
+@DisplayName("KarafSshdClient Tests")
+class KarafSshdClientTest {
 
     @Test
     @DisplayName("Instance can be created via constructor")
     void testInstantiation() {
-        KarafJmxClientConfiguration instance = new KarafJmxClientConfiguration();
+        KarafSshdClient instance = new KarafSshdClient();
         assertThat(instance).isNotNull();
-        assertThat(instance.getApplicationContext()).isNull();
     }
 
     @Test
-    @DisplayName("setApplicationContext stores and getApplicationContext returns it")
-    void testApplicationContextAware() {
-        KarafJmxClientConfiguration config = new KarafJmxClientConfiguration();
-        ApplicationContext context = new GenericApplicationContext();
-
-        config.setApplicationContext(context);
-
-        assertThat(config.getApplicationContext()).isSameAs(context);
+    @DisplayName("connection() is a no-op and returns without throwing")
+    void testConnection() {
+        KarafSshdClient client = new KarafSshdClient();
+        assertThatNoException().isThrownBy(client::connection);
     }
 
 }

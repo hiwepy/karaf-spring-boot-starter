@@ -15,6 +15,8 @@
  */
 package org.apache.karaf.spring.boot;
 
+import org.apache.karaf.spring.boot.jmx.JmxClientConfig;
+import org.apache.karaf.spring.boot.sshd.SshdClientConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,11 +32,30 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @DisplayName("KarafClientProperties Tests")
 class KarafClientPropertiesTest {
+
     @Test
-    @DisplayName("Default constructor creates non-null instance")
-    void testDefaultInstance() {
+    @DisplayName("Default constructor creates instance with non-null jmx/sshd configs")
+    void testDefaults() {
         KarafClientProperties props = new KarafClientProperties();
         assertThat(props).isNotNull();
+        assertThat(props.getJmx()).isNotNull().isInstanceOf(JmxClientConfig.class);
+        assertThat(props.getSshd()).isNotNull().isInstanceOf(SshdClientConfig.class);
+    }
+
+    @Test
+    @DisplayName("Getters and setters round-trip jmx/sshd config objects")
+    void testGettersAndSetters() {
+        KarafClientProperties props = new KarafClientProperties();
+
+        JmxClientConfig jmx = new JmxClientConfig();
+        jmx.setHost("jmx-host");
+        props.setJmx(jmx);
+        assertThat(props.getJmx()).isSameAs(jmx);
+
+        SshdClientConfig sshd = new SshdClientConfig();
+        sshd.setHost("sshd-host");
+        props.setSshd(sshd);
+        assertThat(props.getSshd()).isSameAs(sshd);
     }
 
     @Test
@@ -42,4 +63,5 @@ class KarafClientPropertiesTest {
     void testPREFIXConstant() {
         assertThat(KarafClientProperties.PREFIX).isEqualTo("karaf.client");
     }
+
 }
