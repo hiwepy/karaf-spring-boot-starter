@@ -37,7 +37,7 @@ import com.google.common.util.concurrent.RateLimiter;
 /**
  * http://karaf.apache.org/manual/latest/#_monitoring_and_management_using_jmx
  * http://karaf.apache.org/manual/latest/#_mbeans
- * @author 		： <a href="https://github.com/hiwepy">hiwepy</a>
+ * @author [@Loong Wan](https://github.com/loong10k)
  */
 public class KarafJmxClient implements InitializingBean {
 	

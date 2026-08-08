@@ -13,26 +13,26 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.apache.karaf.spring.boot;
+package org.apache.karaf.spring.boot.sshd;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import org.springframework.context.annotation.Import;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * TODO
+ * Unit tests for {{ @link Main }}.
+ *
  * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
  */
-@Target({ ElementType.TYPE })
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Inherited
-@Import({ KarafJmxClientConfiguration.class })
-public @interface EnableKarafClient {
+@DisplayName("Main Tests")
+class MainTest {
 
+    @Test
+    @DisplayName("Instance can be created via constructor")
+    void testInstantiation() {
+        Main instance = new Main();
+        assertThat(instance).isNotNull();
+    }
 }
