@@ -37,7 +37,7 @@ import com.google.common.util.concurrent.RateLimiter;
 /**
  * http://karaf.apache.org/manual/latest/#_monitoring_and_management_using_jmx
  * http://karaf.apache.org/manual/latest/#_mbeans
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class KarafJmxClient implements InitializingBean {
 	
