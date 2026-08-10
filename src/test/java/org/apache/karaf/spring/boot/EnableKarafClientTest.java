@@ -34,7 +34,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * <p>{@code EnableKarafClient} is an annotation type, so it cannot be instantiated
  * directly; its meta-annotations are verified via reflection instead.</p>
  *
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @DisplayName("EnableKarafClient Tests")
