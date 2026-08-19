@@ -20,24 +20,34 @@ import org.apache.karaf.spring.boot.sshd.SshdClientConfig;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(KarafClientProperties.PREFIX)
+/**
+ * <p>Configuration properties for Karaf Client.</p>
+ *
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class KarafClientProperties {
 
 	public static final String PREFIX = "karaf.client";
 
 	private JmxClientConfig jmx = new JmxClientConfig();
 	private SshdClientConfig sshd = new SshdClientConfig();
+	/** Gets the jmx. */
 
 	public JmxClientConfig getJmx() {
 		return jmx;
 	}
+	/** Sets the jmx. */
 
 	public void setJmx(JmxClientConfig jmx) {
 		this.jmx = jmx;
 	}
+	/** Gets the sshd. */
 
 	public SshdClientConfig getSshd() {
 		return sshd;
 	}
+	/** Sets the sshd. */
 
 	public void setSshd(SshdClientConfig sshd) {
 		this.sshd = sshd;

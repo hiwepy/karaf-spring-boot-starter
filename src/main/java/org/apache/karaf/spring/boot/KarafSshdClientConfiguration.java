@@ -8,6 +8,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties(KarafClientProperties.class)
+/**
+ * <p>Configuration for Karaf Sshd Client.</p>
+ *
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class KarafSshdClientConfiguration implements ApplicationContextAware {
 	
 	private ApplicationContext applicationContext;
@@ -15,6 +21,12 @@ public class KarafSshdClientConfiguration implements ApplicationContextAware {
 	/*@Bean
     @ConditionalOnMissingBean
     //@ConditionalOnClass(org.owasp.csrfguard.CsrfGuard.class)
+	/**
+	 * <p>Java script servlet.</p>
+	 * @param properties the properties
+	 * @return the servlet registration bean< java script servlet>
+	 * @throws Exception if an error occurs
+	 */
 	public ServletRegistrationBean<JavaScriptServlet> javaScriptServlet(KarafClientProperties properties) throws Exception {
 
 		ServletRegistrationBean<JavaScriptServlet> registrationBean = new ServletRegistrationBean<JavaScriptServlet>();
@@ -23,7 +35,7 @@ public class KarafSshdClientConfiguration implements ApplicationContextAware {
 		
 		registrationBean.setServlet(javaScriptServlet);
 		
-		// 默认参数
+		// Default parameters
 		CsrfguardJavascriptServletProperties javascript = properties.getJavascript();
 		registrationBean.addInitParameter("cache-control", javascript.getCacheControl());
 		registrationBean.addInitParameter("domain-strict", Boolean.toString(javascript.isDomainStrict()));
@@ -39,6 +51,10 @@ public class KarafSshdClientConfiguration implements ApplicationContextAware {
 
         return registrationBean;
     }
+	/**
+	 * <p>Csrf guard http session listener.</p>
+	 * @return the servlet listener registration bean< csrf guard http session listener>
+	 */
 	
 	@Bean
 	@ConditionalOnMissingBean
@@ -51,6 +67,11 @@ public class KarafSshdClientConfiguration implements ApplicationContextAware {
 
 		return registrationBean;
 	}
+    /**
+     * <p>Csrf guard filter.</p>
+     * @return the filter registration bean< csrf guard filter>
+     * @throws Exception if an error occurs
+     */
 	
 	
 	@Bean
@@ -68,6 +89,7 @@ public class KarafSshdClientConfiguration implements ApplicationContextAware {
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
 	}
+	/** Gets the application context. */
 
 	public ApplicationContext getApplicationContext() {
 		return applicationContext;

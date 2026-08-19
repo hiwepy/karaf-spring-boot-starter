@@ -10,7 +10,19 @@ import org.apache.sshd.client.channel.ClientChannelEvent;
 import org.apache.sshd.client.future.ConnectFuture;
 import org.apache.sshd.client.session.ClientSession;
 
+/**
+ * <p>Main.</p>
+ *
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Main {
+	/**
+	 * <p>Main.</p>
+	 * @param args the args
+	 * @return the static void
+	 * @throws Exception if an error occurs
+	 */
 
 	public static void main(String[] args) throws Exception {
 

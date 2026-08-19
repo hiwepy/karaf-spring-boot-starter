@@ -38,6 +38,7 @@ import com.google.common.util.concurrent.RateLimiter;
  * http://karaf.apache.org/manual/latest/#_monitoring_and_management_using_jmx
  * http://karaf.apache.org/manual/latest/#_mbeans
  * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
  */
 public class KarafJmxClient implements InitializingBean {
 	
@@ -45,6 +46,10 @@ public class KarafJmxClient implements InitializingBean {
 	protected Map<String,String> mbeans = Maps.newHashMap();
 	protected LoadingCache<String, ObjectName> mbeansCaches;
 	protected RateLimiter limiter;
+	/**
+	 * <p>After properties set.</p>
+	 * @throws Exception if an error occurs
+	 */
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
@@ -71,6 +76,12 @@ public class KarafJmxClient implements InitializingBean {
 		this.mbeansCaches = CacheBuilder.newBuilder()
 			.expireAfterWrite(1, TimeUnit.DAYS)
 			.build(new CacheLoader<String, ObjectName>() {
+				/**
+				 * <p>Load.</p>
+				 * @param pattern the pattern
+				 * @return the object name
+				 * @throws Exception if an error occurs
+				 */
 				@Override
 				public ObjectName load(String pattern) throws Exception {
 					Object[] args = pattern.contains(":") ? pattern.split(":") : new String[] { pattern, "*"};
@@ -91,6 +102,11 @@ public class KarafJmxClient implements InitializingBean {
 	
 	
 	// http://karaf.apache.org/manual/latest/#_connecting
+	/**
+	 * <p>Connecting.</p>
+	 * @return the m bean server connection
+	 * @throws IOException if an error occurs
+	 */
 	public MBeanServerConnection connecting() throws IOException {
 		JMXServiceURL url = new JMXServiceURL("service:jmx:rmi:///jndi/rmi://localhost:1099/karaf-root");
 		JMXConnector connector = JMXConnectorFactory.connect(url, null);
@@ -98,6 +114,12 @@ public class KarafJmxClient implements InitializingBean {
 	}
 	
 	// http://karaf.apache.org/manual/latest/#_mbeans
+	/**
+	 * <p>Execute.</p>
+	 * @param feature the feature
+	 * @param command the command
+	 * @throws IOException if an error occurs
+	 */
 		
 	public void execute(String feature,String command) throws IOException {
 		
@@ -106,7 +128,6 @@ public class KarafJmxClient implements InitializingBean {
 		//mbeanServer = connector.getMBeanServerConnection();
 		
 	}
-	
 	
 	
 }
